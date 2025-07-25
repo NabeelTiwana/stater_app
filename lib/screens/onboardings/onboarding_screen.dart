@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:starter_app/screens/onboardings/widget/onboarding_page.dart';
 import 'package:starter_app/utils/constant/images.dart';
+import 'package:starter_app/utils/constant/texts.dart';
+
+import '../../helpers/device_helper.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -12,9 +16,10 @@ class OnboardingScreen extends StatelessWidget {
         children: [
            PageView(
              children: [
-               Lottie.asset(MyImages.onboarding1Animation),
-               Lottie.asset(MyImages.onboarding2Animation),
-               Lottie.asset(MyImages.onboarding3Animation),
+               OnBoardingPage(animation: MyImages.onboarding1Animation,title: MyText.onBoardingTitle1,subtite: MyText.onBoardingSubTitle1,),
+               OnBoardingPage(animation: MyImages.onboarding2Animation,title: MyText.onBoardingTitle2,subtite: MyText.onBoardingSubTitle2,),
+               OnBoardingPage(animation: MyImages.onboarding3Animation,title: MyText.onBoardingTitle3,subtite: MyText.onBoardingSubTitle3,),
+
 
              ],
            ),
@@ -23,3 +28,5 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 }
+
+
