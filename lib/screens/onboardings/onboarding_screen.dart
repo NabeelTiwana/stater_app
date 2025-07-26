@@ -16,9 +16,9 @@ class OnboardingScreen extends StatelessWidget {
         children: [
            PageView(
              children: [
-               OnBoardingPage(animation: MyImages.onboarding1Animation,title: MyText.onBoardingTitle1,subtite: MyText.onBoardingSubTitle1,),
-               OnBoardingPage(animation: MyImages.onboarding2Animation,title: MyText.onBoardingTitle2,subtite: MyText.onBoardingSubTitle2,),
-               OnBoardingPage(animation: MyImages.onboarding3Animation,title: MyText.onBoardingTitle3,subtite: MyText.onBoardingSubTitle3,),
+               OnBoardingPage(animation: MyImages.onboarding1Animation,title: MyText.onBoardingTitle1,subtitle: MyText.onBoardingSubTitle1,),
+               OnBoardingPage(animation: MyImages.onboarding2Animation,title: MyText.onBoardingTitle2,subtitle: MyText.onBoardingSubTitle2,),
+               OnBoardingPage(animation: MyImages.onboarding3Animation,title: MyText.onBoardingTitle3,subtitle: MyText.onBoardingSubTitle3,),
 
 
              ],

@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class DeviceHelper{
+class DeviceHelper {
   DeviceHelper._();
-  static bool isDarkMode(BuildContext context){
-    return MediaQuery.of(context).platformBrightness==Brightness.dark;
+
+  static bool isDarkMode(BuildContext context) {
+    return MediaQuery.of(context).platformBrightness == Brightness.dark;
   }
+
   static void hideKeyboard(BuildContext context) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
@@ -17,18 +19,19 @@ class DeviceHelper{
     );
   }
 
+  // Fixed orientation methods
   static bool isLandscapeOrientation(BuildContext context) {
-    final viewInsets = View.of(context).viewInsets;
-    return viewInsets.bottom == 0;
+    return MediaQuery.of(context).orientation == Orientation.landscape;
   }
 
   static bool isPortraitOrientation(BuildContext context) {
-    final viewInsets = View.of(context).viewInsets;
-    return viewInsets.bottom != 0;
+    return MediaQuery.of(context).orientation == Orientation.portrait;
   }
 
   static void setFullScreen(bool enable) {
-    SystemChrome.setEnabledSystemUIMode(enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
+    SystemChrome.setEnabledSystemUIMode(
+      enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge,
+    );
   }
 
   static double getBottomNavigationBarHeight() {
@@ -48,7 +51,6 @@ class DeviceHelper{
   }
 
   static double getKeyboardHeight(BuildContext context) {
-    final viewInsets = MediaQuery.of(context).viewInsets;
-    return viewInsets.bottom;
+    return MediaQuery.of(context).viewInsets.bottom;
   }
 }
