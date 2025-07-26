@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:starter_app/responsive/responsive_text_style.dart';
 import '../../../helpers/device_helper.dart';
+import '../../../responsive/responsive_helper.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({
@@ -17,31 +19,62 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        left: 20,
-        right: 20,
+      padding: EdgeInsets.symmetric(
+        horizontal: ResponsiveHelper.getValueForPhoneSize(
+          context,
+          smallPhone: 16.0,
+          largePhone: 24.0,
+          mediumPhone: 20.0,
+        ),
+      ).copyWith(
         top: DeviceHelper.getAppBarHeight(),
       ),
       child: Column(
         children: [
           Lottie.asset(
             animation,
-            height: DeviceHelper.getScreenHeight(context) * 0.4,
+            height: ResponsiveHelper.getValueForPhoneSize(
+              context,
+              smallPhone: DeviceHelper.getScreenHeight(context) * 0.35,
+              largePhone: DeviceHelper.getScreenHeight(context) * 0.45,
+              mediumPhone: DeviceHelper.getScreenHeight(context) * 0.4,
+            ),
           ),
-          const SizedBox(height: 24),
+          SizedBox(
+            height: ResponsiveHelper.getValueForPhoneSize(
+              context,
+              smallPhone: 16.0,
+              largePhone: 24.0,
+              mediumPhone: 20.0,
+            ),
+          ),
           Text(
             title,
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            style: context.responsiveHeadlineMedium?.copyWith(
               fontWeight: FontWeight.bold,
             ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 16),
+          SizedBox(
+            height: ResponsiveHelper.getValueForPhoneSize(
+              context,
+              smallPhone: 12.0,
+              largePhone: 16.0,
+              mediumPhone: 14.0,
+            ),
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.symmetric(
+              horizontal: ResponsiveHelper.getValueForPhoneSize(
+                context,
+                smallPhone: 16.0,
+                largePhone: 32.0,
+                mediumPhone: 24.0,
+              ),
+            ),
             child: Text(
               subtitle,
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: context.responsiveBodyLarge,
               textAlign: TextAlign.center,
             ),
           ),
