@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveHelper {
-  static const double mobileBreakpoint = 600;
+  // Breakpoint between small and large phones
+  static const double smallPhoneBreakpoint = 375;
+  static const double largePhoneBreakpoint = 600;
 
-  static bool isMobile(BuildContext context) {
-    return MediaQuery.of(context).size.width < mobileBreakpoint;
+  static bool isSmallPhone(BuildContext context) {
+    return MediaQuery.of(context).size.width < smallPhoneBreakpoint;
+  }
+
+  static bool isLargePhone(BuildContext context) {
+    return MediaQuery.of(context).size.width >= largePhoneBreakpoint;
   }
 
   static bool isPortrait(BuildContext context) {
@@ -15,33 +21,52 @@ class ResponsiveHelper {
     return MediaQuery.of(context).orientation == Orientation.landscape;
   }
 
-  // Get responsive value based on screen size
-  static T getValue<T>(
+  // Get responsive value for different phone sizes
+  static T getValueForPhoneSize<T>(
       BuildContext context, {
-        required T mobile,
-        T? tablet,
-        T? desktop,
+        required T smallPhone,
+        required T largePhone,
+        T? mediumPhone,
       }) {
-    return mobile; // Always return mobile value for iOS/Android only
+    final width = MediaQuery.of(context).size.width;
+
+    if (width >= largePhoneBreakpoint) {
+      return largePhone;
+    } else if (mediumPhone != null && width >= smallPhoneBreakpoint) {
+      return mediumPhone;
+    }
+    return smallPhone;
   }
 
-  // Get columns count for grid
+  // Simplified columns count for grid
   static int getColumnsCount(BuildContext context) {
-    return isMobile(context) ? 1 : 2;
+    return isLargePhone(context) ? 2 : 1;
   }
 
-  // Get padding based on screen size
+  // Get responsive padding
   static EdgeInsets getPadding(BuildContext context) {
-    return const EdgeInsets.all(16.0);
+    return EdgeInsets.all(
+      getValueForPhoneSize(
+        context,
+        smallPhone: 12.0,
+        largePhone: 16.0,
+        mediumPhone: 14.0,
+      ),
+    );
   }
 
   // Get responsive font size
-  static double getFontSize(
+  static double getFontSizeForPhone(
       BuildContext context, {
-        required double mobile,
-        double? tablet,
-        double? desktop,
+        required double smallPhone,
+        required double largePhone,
+        double? mediumPhone,
       }) {
-    return mobile;
+    return getValueForPhoneSize(
+      context,
+      smallPhone: smallPhone,
+      largePhone: largePhone,
+      mediumPhone: mediumPhone,
+    );
   }
 }
