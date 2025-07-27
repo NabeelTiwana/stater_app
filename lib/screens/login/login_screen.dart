@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:starter_app/responsive/responsive_helper.dart';
+import 'package:starter_app/screens/login/widget/text_form_feild.dart';
 import 'package:starter_app/utils/constant/texts.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -31,11 +31,11 @@ class LoginScreen extends StatelessWidget {
               mediumPhone: 20.0,
             ),
           ),
-          TextField(
-            decoration: InputDecoration(prefixIcon: Icon(Iconsax.direct_right)),
-          ),
+          MyEmailFormField(),
         ],
       ),
     );
   }
 }
+
+
