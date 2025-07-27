@@ -7,6 +7,7 @@ import 'package:starter_app/utils/constant/texts.dart';
 
 import '../../common/widget/my_elevated_button.dart';
 import '../home_page.dart';
+import '../login/login_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -83,7 +84,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 // Navigate to next screen when on last page
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (_) => const HomePage()),
+                  MaterialPageRoute(builder: (_) => const LoginScreen()),
                 );
               }
             },
