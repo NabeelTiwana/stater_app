@@ -8,6 +8,8 @@ class MyText{
   static const String onBoardingSubTitle2='Discover top-quality products at the best prices with a seamless shopping experience';
   static const String onBoardingSubTitle3='Get your favorite items delivered to your doorstep, anytime, anywhere';
 
+  static const String loginTitle='Shop Smarter';
+  static const String loginSubTitle='Log in to Access Exclusive Deals and Simplify Your Shopping Experience';
 
 
 
